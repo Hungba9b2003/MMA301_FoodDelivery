@@ -1,6 +1,9 @@
 {
+  
   "expo": {
-    "name": "FoodRecipe",
+    "entryPoint": "./index.js",
+    "name": "FoodRecipesApp",
+    "displayName": "FoodRecipesApp",
     "slug": "FoodRecipe",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -16,10 +19,14 @@
       "supportsTablet": true
     },
     "android": {
+      "permissions": [
+        "INTERNET"
+      ],
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.example.foodrepice"
     },
     "web": {
       "bundler": "metro",

@@ -1,0 +1,52 @@
+{
+    "recipes": [
+      {
+        "id": 1,
+        "title": "Pasta Carbonara",
+        "recipe_picture": "https://example.com/images/pasta.jpg",
+        "category": "Main Dish",
+        "likes": 120,
+        "description": "A classic Italian pasta dish with eggs, cheese, pancetta, and pepper."
+      },
+      {
+        "id": 2,
+        "title": "Avocado Salad",
+        "recipe_picture": "https://example.com/images/salad.jpg",
+        "category": "Salad",
+        "likes": 85,
+        "description": "A refreshing salad with avocado, cherry tomatoes, and cucumbers."
+      },
+      {
+        "id": 3,
+        "title": "Chocolate Cake",
+        "recipe_picture": "https://example.com/images/cake.jpg",
+        "category": "Dessert",
+        "likes": 200,
+        "description": "A rich and moist chocolate cake perfect for dessert lovers."
+      },
+      {
+        "id": 4,
+        "title": "French Toast",
+        "recipe_picture": "https://example.com/images/french-toast.jpg",
+        "category": "Breakfast",
+        "likes": 150,
+        "description": "Classic French toast topped with powdered sugar and syrup."
+      },
+      {
+        "id": 5,
+        "title": "Mango Smoothie",
+        "recipe_picture": "https://example.com/images/smoothie.jpg",
+        "category": "Beverage",
+        "likes": 95,
+        "description": "A refreshing smoothie made with fresh mango and yogurt."
+      },
+      {
+        "id": 6,
+        "title": "Cheeseburger",
+        "recipe_picture": "https://example.com/images/burger.jpg",
+        "category": "Snack",
+        "likes": 180,
+        "description": "A juicy cheeseburger with lettuce, tomato, and cheddar cheese."
+      }
+    ]
+  }
