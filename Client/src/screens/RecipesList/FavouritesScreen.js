@@ -41,12 +41,12 @@ export default function FavoritesScreen({ navigation }) {
         `${Config.API_BASE_URL}/api/recipes/${userId}/favorites`
       );
       const favoriteIds = response.data.favoriteIds;
-      console.log(favoriteIds);
+      // console.log(favoriteIds);
       const recipesResponse = await axios.post(
         `${Config.API_BASE_URL}/api/recipes/user/list/favourites`,
         { ids: favoriteIds }
       );
-      console.log(recipesResponse.data);
+      // console.log(recipesResponse.data);
       setFavoriteRecipes(recipesResponse.data);
     } catch (error) {
       console.error("Error fetching favorite recipes:", error.message);

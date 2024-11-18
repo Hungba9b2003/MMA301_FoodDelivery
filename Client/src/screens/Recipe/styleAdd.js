@@ -38,6 +38,23 @@ export default StyleSheet.create({
     marginBottom: 50,
     alignItems: "center",
   },
+  cancelButton: {
+    flex: 1,
+    marginBottom: 60,
+    backgroundColor: "#FF6347",
+    padding: 12,
+    borderRadius: 5,
+    alignItems: "center",
+    marginHorizontal: 5,
+  },
+  buttonText: {
+    color: "#fff",
+    fontSize: 16,
+  },
+  cancelButtonText: {
+    color: "#fff",
+    fontSize: 16,
+  },
   buttonText: {
     color: "#fff",
     fontSize: 16,
@@ -48,6 +65,21 @@ export default StyleSheet.create({
     borderRadius: 8,
     paddingVertical: 10,
     marginTop: 10,
+  },
+  deleteButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    color: "white",
+    textAlign: "center",
+    backgroundColor: "#FF4C4C",
+    padding: 8,
+    borderRadius: 5,
+    marginTop: 5,
+  },
+  deleteButtonText: {
+    color: "white",
+    fontSize: 14,
+    marginLeft: 5,
   },
   addButtonText: {
     color: "#fff",

@@ -1,5 +1,4 @@
 {
-  
   "expo": {
     "entryPoint": "./index.js",
     "name": "FoodRecipesApp",
@@ -38,6 +37,14 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "addac8a8-003a-485c-bb24-35fdd944ede6"
+      }
     }
   }
 }

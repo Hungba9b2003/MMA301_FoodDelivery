@@ -12,7 +12,7 @@ import {
 import axios from "axios";
 import MenuImage from "../../components/MenuImage/MenuImage";
 import Config from "@/config";
-import { getCategoryName } from "../../data/MockDataAPI";
+
 import { useIsFocused } from "@react-navigation/native";
 export default function HomeScreen({ navigation }) {
   const [recipes, setRecipes] = useState([]);
@@ -75,9 +75,7 @@ export default function HomeScreen({ navigation }) {
           resizeMode="cover"
         />
         <Text style={styles.title}>{recipe.name}</Text>
-        <Text style={styles.category}>
-          {getCategoryName(recipe.typeRecipe)}
-        </Text>
+        <Text style={styles.category}></Text>
       </View>
     </TouchableHighlight>
   );

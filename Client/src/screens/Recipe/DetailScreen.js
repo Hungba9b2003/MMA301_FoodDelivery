@@ -146,7 +146,7 @@ function DetailScreen({ navigation, route }) {
               {recipe.steps.map((step, index) => (
                 <View key={index} style={styles.stepItem}>
                   <Text style={styles.stepTitle}>
-                    Step {index + 1}: {step.stepName}
+                    Step {index + 1}: {step.stepName} ({step.time} min)
                   </Text>
                   <Text>{step.description}</Text>
                   {step.imageUrl && (

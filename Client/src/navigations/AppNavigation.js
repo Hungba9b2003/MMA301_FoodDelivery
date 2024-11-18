@@ -9,9 +9,6 @@ import HomeScreen from "../screens/Home/HomeScreen";
 import CategoriesScreen from "../screens/Categories/CategoriesScreen";
 import DetailScreen from "../screens/Recipe/DetailScreen";
 import RecipesListScreen from "../screens/RecipesList/RecipesListScreen";
-import DrawerContainer from "../screens/DrawerContainer/DrawerContainer";
-import IngredientScreen from "../screens/Ingredient/IngredientScreen";
-import SearchScreen from "../screens/Search/SearchScreen";
 import IngredientsDetailsScreen from "../screens/IngredientsDetails/IngredientsDetailsScreen";
 import AddRecipeScreen from "../screens/Recipe/AddRecipeScreen";
 import AsyncStorage from "@react-native-async-storage/async-storage"; // Ensure AsyncStorage is imported
@@ -114,9 +111,7 @@ function MainNavigator() {
       <Stack.Screen name="Categories" component={CategoriesScreen} />
       <Stack.Screen name="DetailScreen" component={DetailScreen} />
       <Stack.Screen name="RecipesList" component={RecipesListScreen} />
-      <Stack.Screen name="Ingredient" component={IngredientScreen} />
       <Stack.Screen name="Register" component={Register} />
-      <Stack.Screen name="Search" component={SearchScreen} />
       <Stack.Screen
         name="IngredientsDetails"
         component={IngredientsDetailsScreen}
@@ -136,9 +131,6 @@ function DrawerStack() {
         width: 250,
       }}
       screenOptions={{ headerShown: false }}
-      drawerContent={({ navigation }) => (
-        <DrawerContainer navigation={navigation} />
-      )}
     >
       <Drawer.Screen name="Main" component={MainNavigator} />
     </Drawer.Navigator>

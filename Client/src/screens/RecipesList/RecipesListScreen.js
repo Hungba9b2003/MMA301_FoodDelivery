@@ -20,7 +20,7 @@ export default function RecipesListScreen(props) {
     // Fetch recipes based on selected typeRecipe
     const fetchRecipes = async () => {
       try {
-        console.log(typeRecipe);
+        // console.log(typeRecipe);
         const response = await axios.get(
           `${Config.API_BASE_URL}/api/recipes/list/byTypeRecipe?typeRecipe=${typeRecipe}`
         );

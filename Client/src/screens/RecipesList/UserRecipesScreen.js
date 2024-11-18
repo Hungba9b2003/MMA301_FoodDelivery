@@ -39,23 +39,26 @@ const UserRecipesScreen = ({ navigation }) => {
 
   const deleteRecipe = (recipeId) => {
     Alert.alert(
-      "Xác nhận xóa",
-      "Bạn có chắc chắn muốn xóa công thức này không?",
+      "Confirm deletion",
+      "Are you sure you want to delete this recipe?",
       [
         {
-          text: "Hủy",
-          onPress: () => console.log("Hủy xóa"),
+          text: "Cancel",
+          onPress: () => console.log("Cancel deletion"),
           style: "cancel",
         },
         {
-          text: "Xóa",
+          text: "Delete",
           onPress: async () => {
             try {
               await axios.delete(
                 `${Config.API_BASE_URL}/api/recipes/user/delete/${recipeId}`
               );
               setRecipes(recipes.filter((recipe) => recipe._id !== recipeId));
-              Alert.alert("Thành công", "Công thức đã được xóa thành công.");
+              Alert.alert(
+                "Successfully",
+                "recipe has been successfully deleted."
+              );
             } catch (error) {
               console.error("Lỗi khi xóa công thức:", error);
               Alert.alert("Lỗi", "Không thể xóa công thức. Vui lòng thử lại.");

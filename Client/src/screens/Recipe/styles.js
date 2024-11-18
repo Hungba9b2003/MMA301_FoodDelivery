@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
   carousel: {
     flexGrow: 0,
   },
+
   imageContainer: {
     flex: 1,
     justifyContent: "center",

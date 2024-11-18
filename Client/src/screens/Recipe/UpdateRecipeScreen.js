@@ -87,7 +87,7 @@ const UpdateRecipeScreen = ({ navigation, route }) => {
     setSteps([...steps, newStep]);
   };
 
-  const handleStepChange = (index, field, value) => {
+  const handleStepChange = (index, field, value) => { 
     const updatedSteps = [...steps];
     updatedSteps[index][field] = value;
     setSteps(updatedSteps);

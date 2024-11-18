@@ -1,12 +1,10 @@
 import React, { useState, useContext } from "react";
-import Toast from "react-native-toast-message";
 import axios from "axios";
 import Config from "@/config";
 import { AuthContext } from "@/AuthContext";
 import {
   View,
   TextInput,
-  Button,
   Text,
   ScrollView,
   TouchableOpacity,
@@ -28,15 +26,22 @@ export default function AddRecipeScreen({ navigation }) {
   const [totalTime, setTotalTime] = useState(0);
   const [typeRecipe, setTypeRecipe] = useState("");
 
-  // Validate inputs
+  // Reset all form fields
+  const resetForm = () => {
+    setName("");
+    setImageUrl("");
+    setDescription("");
+    setTotalTime(0);
+    setTypeRecipe("");
+    setIngredients([{ imageUrl: "", name: "", measurement: "" }]);
+    setSteps([{ stepName: "", description: "", imageUrl: "", time: 0 }]);
+  };
+
   const validateInputs = () => {
-    // Check if essential fields are filled
     if (!name || !description || !totalTime || !typeRecipe) {
       Alert.alert("Validation Error", "Please fill in all required fields.");
       return false;
     }
-
-    // Check if ingredients and steps are filled properly
     for (let ingredient of ingredients) {
       if (!ingredient.name || !ingredient.measurement) {
         Alert.alert(
@@ -46,33 +51,31 @@ export default function AddRecipeScreen({ navigation }) {
         return false;
       }
     }
-
     for (let step of steps) {
       if (!step.stepName || !step.description || step.time <= 0) {
         Alert.alert("Validation Error", "Please fill in all step details.");
         return false;
       }
     }
-
     return true;
   };
 
   const addRecipe = async () => {
-    const userId = await getUserId(); // Lấy userId
+    const userId = await getUserId();
 
     if (!validateInputs()) {
-      return; // Exit if validation fails
+      return;
     }
 
     const recipeData = {
       name,
-      imageUrl: [imageUrl], // Ensure imageUrl is an array as per schema
+      imageUrl: [imageUrl],
       description,
       ingredients,
       steps,
       totalTime,
       typeRecipe,
-      userId, // Thêm userId vào dữ liệu công thức
+      userId,
       createAt: new Date(),
       updateAt: new Date(),
     };
@@ -82,11 +85,13 @@ export default function AddRecipeScreen({ navigation }) {
         `${Config.API_BASE_URL}/api/recipes/user/add`,
         recipeData
       );
-      // console.log("Recipe added:", response.data);
       Alert.alert("Success", "Recipe added successfully!", [
         {
           text: "OK",
-          onPress: () => navigation.goBack(),
+          onPress: () => {
+            resetForm();
+            navigation.navigate("UserRecipes");
+          },
         },
       ]);
     } catch (error) {
@@ -106,6 +111,21 @@ export default function AddRecipeScreen({ navigation }) {
       ...steps,
       { stepName: "", description: "", imageUrl: "", time: 0 },
     ]);
+
+  const deleteIngredient = (index) => {
+    const updatedIngredients = ingredients.filter((_, i) => i !== index);
+    setIngredients(updatedIngredients);
+  };
+
+  const deleteStep = (index) => {
+    const updatedSteps = steps.filter((_, i) => i !== index);
+    setSteps(updatedSteps);
+  };
+
+  const cancelAddRecipe = () => {
+    resetForm();
+    navigation.goBack();
+  };
 
   return (
     <ScrollView style={styles.container}>
@@ -183,6 +203,12 @@ export default function AddRecipeScreen({ navigation }) {
             }}
             placeholder="Image URL (Optional)"
           />
+          <TouchableOpacity
+            style={styles.deleteButton}
+            onPress={() => deleteIngredient(index)}
+          >
+            <Text style={styles.deleteButtonText}>Delete Ingredient</Text>
+          </TouchableOpacity>
         </View>
       ))}
       <TouchableOpacity style={styles.addButton} onPress={addIngredient}>
@@ -234,6 +260,12 @@ export default function AddRecipeScreen({ navigation }) {
             }}
             placeholder="Image URL (Optional)"
           />
+          <TouchableOpacity
+            style={styles.deleteButton}
+            onPress={() => deleteStep(index)}
+          >
+            <Text style={styles.deleteButtonText}>Delete Step</Text>
+          </TouchableOpacity>
         </View>
       ))}
       <TouchableOpacity style={styles.addButton} onPress={addStep}>
@@ -242,6 +274,10 @@ export default function AddRecipeScreen({ navigation }) {
 
       <TouchableOpacity style={styles.buttonContainer} onPress={addRecipe}>
         <Text style={styles.buttonText}>Save Recipe</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.cancelButton} onPress={cancelAddRecipe}>
+        <Text style={styles.cancelButtonText}>Cancel</Text>
       </TouchableOpacity>
     </ScrollView>
   );
